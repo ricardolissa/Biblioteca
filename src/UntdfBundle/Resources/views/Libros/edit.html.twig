@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<div class="container">
+	<div class ="card">
+		<h3 class="card-header text-white bg-primary mb-3" >Editar Libro</h3>
+		<div class="card-body">
+
+			<ul>
+				{{ form_start(edit_form) }}
+
+				
+				{{ form_row(edit_form.nombre) }}
+				{{ form_row(edit_form.isbn) }}
+				{{ form_row(edit_form.edicion) }}
+				{{ form_row(edit_form.editorial) }}
+				{{ form_row(edit_form.resumen) }}
+				
+				<img src="{{ asset('public/images/' ~ fotoActual) }}">
+				{{ form_row(edit_form.foto) }}
+
+				{{ form_widget(edit_form) }}
+				
+
+				<li><button type="submit" class="btn btn-warning">Editar</button>
+				</li>
+
+				{{ form_end(edit_form) }}
+
+				<li>
+					{{ form_start(delete_form) }}
+					<input type="submit" value="Delete" class="btn btn-danger">
+					{{ form_end(delete_form) }}
+				</li>
+				<li>
+					<a href="{{ path('libro_index') }}" class="btn btn-primary"> Volver a la lista</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="container" align="center">
+	<h1>
+		<B> BIENVENIDOS A LA BIBLIOTECA <B>  
+		</h1>
+	</div>
+
+<br>
+<div class="container" aling="center">
+	{{ form_start(form) }}
+<div class="row container" align="center">
+<div class="col-md-2">{{ form_row(form.buscar) }}</div>
+<div class="col-md-2">{{ form_row(form.isbn) }} </div>	
+<div class="col-md-2">	{{ form_row(form.idioma) }} </div>
+<div class="col-md-2">	{{ form_row(form.categorias) }}</div>
+<div class="col-md-2">	{{ form_row(form.autores) }}</div>
+	
+	{{ form_widget(form) }}
+
+
+<div class="col-md-2">	<br>	<input class="btn btn-primary" type="submit" value="Buscar" /></div>
+</div>
+		{{ form_end(form) }}
+
+</div>
+<br>
+
+<div class="container" align="center">
+	{% trans %} Hello %name% how are you? {%endtrans%} 
+</div>
+
+	
+<div class="container" align="center">
+		
+		<div class="card-columns">
+			{% for libro in libros %}
+			
+			<div class ="card" align="center">
+				<img src="{{ asset('public/images/' ~ libro.foto) }}">
+				
+				<div class="card-body">
+					 <h5 class="card-title">{{ libro.nombre }}</h5>
+					<p class="card-text"><small class="text-muted"><i>Autor:</i> 
+						<b>{% for autor in libro.autores %}
+						{{ autor.nombre }}
+						{% endfor %}</b></small>
+					</p>
+					<p class="card-text"><small class="text-muted"><i>ISBN:</i><b> {{libro.isbn}} </b></small></p>
+					<p class="card-text"><small class="text-muted"><i> Edicion:</i><b>  {{libro.edicion}}</b></small></p>
+					<p class="card-text"><small class="text-muted"><i> Editorial:</i><b>  {{libro.editorial}}</b> </small></p>
+					<p class="card-text"><small class="text-muted"><i> Idioma:</i><b>  {{libro.idioma}}</b> </small></p>
+					<p class="card-text"><small class="text-muted"><i> Categoria:</i> 
+					 	<b>{% for categoria in libro.categorias %}
+						{{ categoria.nombre }}
+						{% endfor %} </b></small>
+					</p>
+					
+				</div>
+			</div>
+			
+			{% endfor %}
+		</div>	
+</div>
+
+
+
+{% endblock %}

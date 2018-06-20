@@ -1,0 +1,21 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  
+    <div class="container">
+        <div class="card">
+            <h3 class="card-header text-white bg-primary mb-3">{{ autor.nombre }}</h3>
+            <div class="card-body">
+                <p class="card-text"> Apodo : {{ autor.apodo }}</p>
+                <p class="card-text">Foto : {{autor.foto}} </p>
+                <h5 class="card-title">Biografia : </h5>
+                <p class="card-text">{{autor.biografia}} </p>
+                
+            </div>
+            <a href="{{ path('autor_index') }}" class="btn btn-primary"> Volver a la lista</a>
+                         
+       </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+untdf:
+    resource: "@UntdfBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+for_user:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+for_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+for_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+for_user_ressetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting 
+
+for_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile 
+
+api:
+    type: rest
+    resource: '@UntdfBundle/Controller/ApiController.php'

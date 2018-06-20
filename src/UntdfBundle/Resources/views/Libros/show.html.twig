@@ -1,0 +1,43 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  
+    <div class="container">
+        <div class="card">
+            <h3 class="card-header text-white bg-primary mb-3">{{ libro.nombre }}</h3>
+            <div class="card-body">
+                <p class="card-text"> Edicion : {{ libro.edicion}}</p>
+     
+                <p class="card-text">ISBN : {{libro.isbn}} </p>
+
+                <p class="card-text">Editorial : {{libro.editorial}} </p>
+                
+                <p class="card-text">Foto : <img src="{{ asset('public/images/' ~ libro.foto) }}"></a>
+                 </p>
+                <p class="card-text">Vista Previa : {{libro.vistaprevia}} </p>
+                <p class="card-text">Link Archivo : {{libro.linkarchivo}} </p>
+                <p class="card-text">Web : {{libro.web}}</p>
+                <h5 class="card-title">Indice : </h5>
+                <p class="card-text">{{libro.indice}}</p>
+                <h5 class="card-title">Categoria : </h5>
+                <p class="card-text">{% for categoria in libro.categorias %}
+                                            {{ categoria.nombre }}
+                                        {% endfor %} </p>
+                <h5 class="card-title">libro : </h5>
+                <p class="card-text">{% for idioma in libro.idioma %}
+                                            {{ idioma.nombre }}
+                                        {% endfor %} </p>
+                <h5 class="card-title">Autor : </h5>
+                <p class="card-text">{% for autor in libro.autores %}
+                                            {{ autor.nombre }}
+                                        {% endfor %}</p>
+
+                <h5 class="card-title">Resumen : </h5>
+                <p class="card-text">{{libro.resumen}} </p>
+              
+            </div>
+                   <a href="{{ path('libro_index') }}" class="btn btn-primary"> Volver a la lista</a>
+        </div>
+    </div>
+{% endblock %}

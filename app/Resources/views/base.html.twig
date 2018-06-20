@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>{% block title %}UNTDF Biblioteca{% endblock %}</title>
+  {% block stylesheets %}
+
+  {% endblock %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <ul>
+        <img src="{{ asset('public/images/isologotipo.png') }}" width="100" height="50"></a>
+      </ul>
+      
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav" align="center">
+      <ul class="navbar-nav">
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Libro
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{{ path('libro_new') }}">Crear</a>
+            <a class="dropdown-item" href="{{ path('libro_index') }}">Listar</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Autor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{{ path('autor_new') }}">Crear</a>
+            <a class="dropdown-item" href="{{ path('autor_index') }}">Listar</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Idioma
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a  <a class="dropdown-item" href="{{ path('idioma_new') }}">Crear</a>
+            <a class="dropdown-item" href="{{ path('idioma_index') }}">Listar</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categoria
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{{ path('categoria_new') }}">Crear</a>
+            <a class="dropdown-item" href="{{ path('categoria_index') }}">Listar</a>
+          </div>
+        </li>
+
+
+
+
+        <li>
+
+
+        </li>
+      </ul>
+      <ul>
+       <div align="right"> 
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+        <a class="btn btn-outline-primary" href="{{ path('fos_user_security_logout') }}" >
+          {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+      </div>
+    </ul>
+    {% else %}
+
+      
+    </div> 
+    {% endif %} 
+    <ul>
+      {% if app.user %}
+
+      {% else %}
+      <a class="btn btn-outline-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+      </a>
+      {% endif %}
+      
+
+    </ul>
+
+
+  </div>
+</nav>
+
+{% for message in app.flashes('new') %}
+<div class="alert alert-info alert-dismissible">
+  {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('edit') %}
+<div class="alert alert-warning alert-dismissible">
+  {{ message }}
+</div>
+{% endfor %}
+{% for message in app.flashes('delete') %}
+<div class="alert alert-danger alert-dismissible">
+  {{ message }}
+</div>
+{% endfor %}
+
+<br>
+
+{% block body %}
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('select').select2();
+});
+</script>
+{% endblock %}
+
+
+
+</body>
+</html>
+

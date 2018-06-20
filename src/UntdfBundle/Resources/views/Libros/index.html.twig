@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container" align="center">
+  <h1><B>LIBROS</B></h1> 
+</div>
+
+<div class="container" align="left">
+  <h1>
+    <a href="{{ path('libro_new') }}" class="badge badge-primary">Crear</a> 
+  </h1>
+</div>
+
+<div class="container">  
+<div class="table-responsive">
+<table class=" table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Edicion</th>
+      <th scope="col">Editorial</th>
+      <th scope="col">Idioma</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Autor</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for libro in libros %}
+            <tr>
+                <th scope="row" > 
+                    
+                    <a href=" {{ path('libro_show', {id:libro.id})}}">  {{ libro.nombre }} </a> 
+
+                               </th>
+                    <th scope="row"> {{libro.isbn}} </th>
+                    <th scope="row"> {{libro.edicion}} </th>
+                    <th scope="row"> {{libro.editorial}} </th>
+                    <th scope="row"> {{libro.idioma}} </th>
+                    <th scope="row">    
+                        {% for categoria in libro.categorias %}
+                                {{ categoria.nombre }}
+                            {% endfor %}
+                    </th>
+                    <th scope="row">    {% for autor in libro.autores %}
+                                {{ autor.nombre }}
+                            {% endfor %}
+                    </th>
+                  <th scope="row">     
+                     <a href=" {{ path('libro_edit', {id:libro.id})}}">  <span class="badge badge-warning">Editar</span></a> 
+                     
+                  </th>
+
+                
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+
+
+{% endblock %}

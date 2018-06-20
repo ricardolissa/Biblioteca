@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+<div class="container" align="center">
+  <h1><B>IDIOMAS</B></h1> 
+</div>
+<br>
+<div class="container" align="left">
+  <h1>
+    <a href="{{ path('idioma_new') }}" class="badge badge-primary">Crear</a> 
+  </h1>
+</div>
+
+<div class="container">   
+  <div class="table-responsive">
+    <table class=" table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col"></th>
+        </tr>
+
+      </thead>
+      <tbody>
+        {% for idioma in idiomas %}
+        <tr>
+          <th scope="row"> 
+
+            <a href=" {{ path('idioma_show', {id:idioma.id})}}">  {{ idioma.nombre }} </a> 
+
+          </th>
+          <th scope="row"> 
+           
+            <a href="{{ path('idioma_edit', { 'id': idioma.id }) }}"><span class="badge badge-warning">Editar</span></a>
+
+          </th>
+
+        </tr>       
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+{% endblock %}
