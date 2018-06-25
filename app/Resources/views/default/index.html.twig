@@ -38,7 +38,7 @@
 		
 		<div class="card-columns">
 			{% for libro in libros %}
-			
+			<a href=" {{ path('libro_show', {id:libro.id})}}">  
 			<div class ="card" align="center">
 				<img src="{{ asset('public/images/' ~ libro.foto) }}">
 				
@@ -56,7 +56,7 @@
 					<p class="card-text"><small class="text-muted"><i> Categoria:</i> 
 					 	<b>{% for categoria in libro.categorias %}
 						{{ categoria.nombre }}
-						{% endfor %} </b></small>
+				</a>		{% endfor %} </b></small>
 					</p>
 					
 				</div>
