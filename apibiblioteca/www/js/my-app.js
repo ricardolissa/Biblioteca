@@ -1,4 +1,6 @@
 // Initialize app
+var API_URL= 'http://10.7.231.166:8000/api';
+
 var myApp = new Framework7();
 
 
@@ -41,3 +43,36 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
     myApp.alert('Here comes About page');
 })
+
+$$('.pages').on('submit', '#form-busqueda', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    
+    var param = $$('#busquedaTitulo').val();
+
+    $$.ajax({
+        url: API_URL + '/libros',
+        data: {busqueda:param},
+        dataType: 'json',
+        success:function(data){
+            var result =
+                '<div class="content-block-title">Resultados</div>'+
+                '<div class="list-block">' +
+                    '<ul>';
+
+                for(var libro of data) {
+                    result +=
+                        '<li class="item-content">'+
+                            '<div class="item-inner">'+
+                                '<div class="item-title">'+libro.nombre+'<div>'+
+                                '<div>'+
+                                '</li>';
+                        }
+
+                 result += '</ul></div>';
+                 $$('#busquedaResultado').html(result);
+                 }
+
+                });
+
+        });

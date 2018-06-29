@@ -54,7 +54,7 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">Biblioteca</div>
+                    <div class="center sliding">Biblioteca UNTDF</div>
                     <div class="right">
                         <!--
                           Right link contains only icon - additional "icon-only" class
@@ -70,14 +70,14 @@
 
             <div data-page="index" class="page">
                 <!-- Scrollable page content -->
-                <form id="my-form" class="list-block">
+                <form method="GET" id="form-busqueda" class="list-block">
                     <ul>
                         <li>
                             <div class="item-content">
                                 <div class="item-inner">
                                   <div class="item-title label">Titulo</div>
                                   <div class="item-input">
-                                    <input type="text" name="name" placeholder="Ingrese el Titulo">
+                                    <input type="text" name="busquedaTitulo" placeholder="Ingrese el Titulo" id="busquedaTitulo">
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                             <div class="item-inner">
                               <div class="item-title label">Isbn</div>
                               <div class="item-input">
-                                <input type="text" name="name" placeholder="Ingrese el Isbn">
+                                <input type="text" name="busquedaIsbn" placeholder="Ingrese el Isbn">
                             </div>
                         </div>
                     </div>
@@ -97,69 +97,48 @@
                         <div class="item-inner">
                           <div class="item-title label">Idioma</div>
                           <div class="item-input">
-                            <input type="text" name="name" placeholder="Ingrese el Idioma">
+                            <input type="text" name="busquedaIdioma" placeholder="Ingrese el Idioma">
                         </div>
                     </div>
                 </div>
             </li>
             <li>
+            </li>
+            <li>
                 <div class="item-content">
-                        <div class="list-block">
-                          <ul>
-                            <li>
-                                <a href="#" class="item-link smart-select">
-                                <!-- "multiple" attribute for multiple select-->
-                                <select name="car" multiple>
-                                  <!-- options grouped within "optgroup" tag-->
-                                  <optgroup label="Japanese">
-                                    <option value="honda" selected>Honda</option>
-                                    <option value="lexus">Lexus</option>
-                                    <option value="mazda">Mazda</option>
-                                    <option value="nissan">Nissan</option>
-                                    <option value="toyota">Toyota</option>
-                                </optgroup>
-                                <optgroup label="German">
-                                    <option value="audi" selected>Audi</option>
-                                    <option value="bmw">BMW</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="vw">Volkswagen</option>
-                                    <option value="volvo">Volvo</option>
-                                </optgroup>
-                                <optgroup label="American">
-                                    <option value="cadillac">Cadillac</option>
-                                    <option value="chrysler">Chrysler</option>
-                                    <option value="dodge">Dodge</option>
-                                    <option value="ford" selected>Ford</option>
-                                </optgroup>
-                                </select>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Categoria</div>
-                                </div>
-                            </div>
-                            </a>
-                            </li>
-                        </ul>
-                    </div> 
-                
+                    <div class="item-inner">
+                      <div class="item-title label">Autor</div>
+                      <div class="item-input">
+                        <input type="text" name="busquedaAutor" placeholder="Ingrese el Autor">
+                    </div>
+                </div>
             </div>
-        </li>
-<li>
-    <div class="item-content">
-        <div class="item-inner">
-          <div class="item-title label">Autor</div>
-          <div class="item-input">
-            <input type="text" name="name" placeholder="Autor">
-        </div>
-    </div>
+            </li>
+            </ul>
+<div class="content-block">
+  <button type="submit" class="button form-to-data"> Buscar </button>
 </div>
-</li>
-</ul>
 </form>
 
-<div class="content-block">
-  <a href="#" class="button form-to-data">Buscar</a>
-</div>
+<div id="busquedaResultado">
+    <div class="content-block-title">Últimas búsquedas</div>
+                                <div class="list-block">
+                                  <ul>
+                                    <li class="item-content">
+                                      <div class="item-inner">
+                                        <div class="item-title">terror</div>
+                                      </div>
+                                    </li>
+                                    <li class="item-content">
+                                      <div class="item-inner">
+                                        <div class="item-title">vuelta</div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                            </div>
+
+
 
 
 <div class="page-content">
