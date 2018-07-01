@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Autor controller.
  *
- * @Route("admin/autor")
+ * 
  */
 class AutorController extends Controller
 {
     /**
      * Lists all autor entities.
      *
-     * @Route("/", name="autor_index")
+     * @Route("admin/autor", name="autor_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class AutorController extends Controller
     /**
      * Creates a new autor entity.
      *
-     * @Route("/new", name="autor_new")
+     * @Route("admin/autor/new", name="autor_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -64,7 +64,7 @@ class AutorController extends Controller
     /**
      * Finds and displays a autor entity.
      *
-     * @Route("/{id}", name="autor_show")
+     * @Route("autor/{id}", name="autor_show")
      * @Method("GET")
      */
     public function showAction(Autor $autor)
@@ -80,7 +80,7 @@ class AutorController extends Controller
     /**
      * Displays a form to edit an existing autor entity.
      *
-     * @Route("/{id}/edit", name="autor_edit")
+     * @Route("admin/autor/{id}/edit", name="autor_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Autor $autor)
@@ -109,7 +109,7 @@ class AutorController extends Controller
     /**
      * Deletes a autor entity.
      *
-     * @Route("/{id}", name="autor_delete")
+     * @Route("admin/autor/{id}", name="autor_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Autor $autor)

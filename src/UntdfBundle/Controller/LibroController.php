@@ -11,14 +11,14 @@ use UntdfBundle\Entity\Libro;
 /**
  * Libro controller.
  *
- * @Route("admin/libro")
+ * 
  */
 class LibroController extends Controller
 {
     /**
      * Lists all libro entities.
      *
-     * @Route("/", name="libro_index")
+     * @Route("admin/libro", name="libro_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -35,7 +35,7 @@ class LibroController extends Controller
     /**
      * Creates a new libro entity.
      *
-     * @Route("/new", name="libro_new")
+     * @Route("admin/libro/new", name="libro_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -81,7 +81,7 @@ class LibroController extends Controller
     /**
      * Finds and displays a libro entity.
      *
-     * @Route("/{id}", name="libro_show")
+     * @Route("libro/{id}", name="libro_show")
      * @Method("GET")
      */
     public function showAction(Libro $libro)
@@ -97,7 +97,7 @@ class LibroController extends Controller
     /**
      * Displays a form to edit an existing libro entity.
      *
-     * @Route("/{id}/edit", name="libro_edit")
+     * @Route("admin/libro/{id}/edit", name="libro_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Libro $libro)
@@ -136,7 +136,7 @@ class LibroController extends Controller
     /**
      * Deletes a libro entity.
      *
-     * @Route("/{id}", name="libro_delete")
+     * @Route("admin/libro/{id}", name="libro_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Libro $libro)

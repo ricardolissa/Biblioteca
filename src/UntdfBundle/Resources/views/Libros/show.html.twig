@@ -5,7 +5,7 @@
   
     <div class="container">
         <div class="card">
-            <h3 class="card-header text-white bg-primary mb-3">{{ libro.nombre }}</h3>
+            <h1 class="card-header text-white bg-primary mb-3">{{ libro.nombre }}</h1>
             <div class="card-body">
                 <p class="card-text"> Edicion : {{ libro.edicion}}</p>
      
@@ -15,29 +15,28 @@
                 
                 <p class="card-text">Foto : <img src="{{ asset('public/images/' ~ libro.foto) }}"></a>
                  </p>
-                <p class="card-text">Vista Previa : {{libro.vistaprevia}} </p>
-                <p class="card-text">Link Archivo : {{libro.linkarchivo}} </p>
-                <p class="card-text">Web : {{libro.web}}</p>
+                <p class="card-text">Vista Previa : <a href="">{{libro.vistaprevia}}</a> </p>
+                <p class="card-text">Link Archivo : <a href="">{{libro.linkarchivo}}</a> </p>
+                <p class="card-text">Web : <a href="">{{libro.web}}</a></p>
                 <h5 class="card-title">Indice : </h5>
                 <p class="card-text">{{libro.indice}}</p>
                 <h5 class="card-title">Categoria : </h5>
                 <p class="card-text">{% for categoria in libro.categorias %}
                                             {{ categoria.nombre }}
                                         {% endfor %} </p>
-                <h5 class="card-title">libro : </h5>
+                <h5 class="card-title">Idioma : </h5>
                 <p class="card-text">{% for idioma in libro.idioma %}
                                             {{ idioma.nombre }}
                                         {% endfor %} </p>
-                <h5 class="card-title">Autor : </h5>
-                <p class="card-text">{% for autor in libro.autores %}
-                                            {{ autor.nombre }}
+                <p class="card-text"><h5 class="card-title">Autor : </h5> {% for autor in libro.autores %}
+                                            <a href="{{ path('autor_show', {id:autor.id})}}">{{ autor.nombre }}</a>
                                         {% endfor %}</p>
 
                 <h5 class="card-title">Resumen : </h5>
                 <p class="card-text">{{libro.resumen}} </p>
               
             </div>
-                   <a href="{{ path('libro_index') }}" class="btn btn-primary"> Volver a la lista</a>
+                   <a href="/" class="btn btn-primary"> <H3>Regresar</H3></a>
         </div>
     </div>
 {% endblock %}

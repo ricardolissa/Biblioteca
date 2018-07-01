@@ -18,9 +18,30 @@ class ApiController extends FOSRestController
     public function getLibrosAction(Request $request)
     {
         
-
+        $cre=$request->query->get('busqueda');
         $em = $this->getDoctrine()->getManager();
-        $libros = $em->getRepository('UntdfBundle:Libro')->findAll();
+        $librosRepo = $em->getRepository('UntdfBundle:Libro');
+                 
+        $qb = $librosRepo->createQueryBuilder('lib');
+
+        // if(isset($cre['isbn'])) {
+        //         $qb->Where('lib.isbn = :isbn')
+        //         ->setparameter ('isbn', $cre['isbn']); 
+        //     }
+
+        if(isset($cre)) {
+                $qb->andWhere(
+                        $qb->expr()->like('lib.nombre', ':nombre')
+                )
+                ->setparameter ('nombre','%'.$cre.'%'); 
+            
+            } 
+
+        $libros = $qb->getQuery()->getResult();
+
+
+
+
         $view = $this->view($libros,200);
         return $this->handleView($view);
         
