@@ -63,26 +63,31 @@ private $foto;
 
 /**
  * @ORM\Column(type="text")
+ * @JMS\Groups({"api"})
  */
 private $vistaprevia;
 
 /**
  * @ORM\Column(type="text")
+ * @JMS\Groups({"api"})
  */
 private $linkarchivo;
 
 /**
  * @ORM\Column(type="text")
+ * @JMS\Groups({"api"})
  */
 private $web;
 
 /**
  * @ORM\Column(type="text")
+ * @JMS\Groups({"api"})
  */
 private $indice;
 
 /**
  * @ORM\Column(type="date")
+ * @JMS\Groups({"api"})
  */
 private $fechadecarga;
 
