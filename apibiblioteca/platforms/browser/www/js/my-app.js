@@ -1,4 +1,4 @@
-var BASE_URL = 'http://10.7.231.166:8000/';
+var BASE_URL = 'http://192.168.55.4:8000/';
 var API_URL = BASE_URL + 'api';  
 var IMG_URL = BASE_URL + 'public/images/';
 
@@ -19,8 +19,15 @@ $$(document).on('deviceready', function() {
     console.log("Device is ready!");
 });
 
+/*//locale forage pruebas
+var historial = localforage.createInstance({
+  name: "Historial"
+});
 
-
+var libros_favoritos = localforage.createInstance({
+  name: "Libros_favoritos"
+});
+*/
 /*
 localforage.setItem('favoritos', 'data', function (err) {
   // if err is non-null, we got an error
@@ -50,6 +57,13 @@ myApp.onPageInit('show', function (page) {
 
 });
 
+myApp.onPageInit('favoritos', function (page) {
+    //selection = window.getSelection(data[i].id) ;
+    // Do something here for "about" page
+
+});
+
+
 // Option 2. Using one 'pageInit' event handler for all pages:
 $$(document).on('pageInit', function (e) {
     
@@ -78,6 +92,23 @@ $$('.pages').on('submit', '#form-busqueda', function(e){
     
     var param = $$('#busquedaTitulo').val();
     
+//locale forage set item
+    var direccion=API_URL+'/search?busqueda='+param;
+     
+     localforage.setItem(param, direccion).then(function (value) {
+                //alert('setItem');
+                //alert(value);
+            }).catch(function(err) {
+                // This code runs if there were any errors
+                console.log(err);
+            });
+//locale forage
+
+
+
+
+
+
     $$.ajax({
         url: API_URL + '/libros',
         data: {busqueda:param},
@@ -154,3 +185,7 @@ $$('.pages').on('click', 'a.show', function(e){
         });
 
 }); 
+
+
+//favoritos
+
